@@ -1,0 +1,57 @@
+//*********************************SMALL(MAX 640PX)**************************************************
+
+.delete-button{
+  background-color: rgba(226, 160, 160, 0.89);
+}
+.edit-button{
+  background-color: rgba(0, 0, 0, 0.048);
+
+}
+.employee-icon-box, .employee-icon{
+  height: 40px;
+  width: 40px;
+}
+
+.employee-man-button{
+  height: 15px;
+  width: 19px;
+}
+
+.employee-details{
+  flex-grow: 1;
+}
+
+.list-padding{
+  padding:10px;
+}
+
+//*********************************MEDIUM(MAX 1024)**************************************************
+
+@media(min-width:640px){
+  .employee-icon-box, .employee-icon{
+    height: 50px;
+    width: 50px;
+  }
+
+.employee-man-button{
+  height: 40px;
+  width: 60px;
+}
+}
+
+//*********************************LARGE(MIN 1024)**************************************************
+
+
+@media(min-width:1024px){
+  .employee-icon-box, .employee-icon{
+    height: 100px;
+    width: 100px;
+  }
+
+.employee-man-button{
+  height: 50px;
+  width: 60px;
+
+}
+
+}
