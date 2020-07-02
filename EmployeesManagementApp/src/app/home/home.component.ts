@@ -11,6 +11,8 @@ import { Employee } from 'src/models/employee';
 })
 export class HomeComponent implements OnInit {
 employees : Observable<Employee[]>;
+employee : string = "Alina";
+employee2 : string = "Alina2";
 
   constructor(private getDataService : GetDataService,
     ) { }
@@ -18,6 +20,7 @@ employees : Observable<Employee[]>;
   ngOnInit(): void {
   //  console.log(data);
   this.getData();
+
   }
 
   getData(){
