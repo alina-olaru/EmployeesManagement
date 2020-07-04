@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeComponent } from './employee/employee.component';
+import { EmployeesListComponent } from './employees-list/employees-list.component';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeesListComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

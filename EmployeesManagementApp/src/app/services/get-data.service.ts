@@ -1,4 +1,4 @@
-import { Employee } from './../../models/employee';
+import { Employee } from './../models/employee';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';

@@ -1,0 +1,3 @@
+<div *ngFor="let employee of employees | async | orderBy:'FirstName'">
+  <app-employee style="width: 100%;" [employee]="employee"></app-employee>
+</div>

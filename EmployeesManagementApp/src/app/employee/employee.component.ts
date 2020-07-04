@@ -1,18 +1,21 @@
-import { Employee } from './../../models/employee';
-import { Component, OnInit ,Input } from '@angular/core';
+import { Employee } from './../models/employee';
+import { Component, OnInit, Input } from '@angular/core';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
 })
 export class EmployeeComponent implements OnInit {
-  @Input('Employee') employee: string;
+  @Input('employee') employee: Employee;
+  description: SafeHtml;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
     console.log(this.employee);
   }
-
 }
