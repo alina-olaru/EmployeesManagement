@@ -1,14 +1,108 @@
-.box-title{
+.box-title {
   width: 95%;
   background-color: rgba(0, 0, 0, 0.048);
 }
 
+.search-employees-container {
+  position: relative;
+  margin: 0 10px;
+}
 
-.large-title{
+/* necessary to give position: relative to parent. */
+input[type="text"] {
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+.search-employees {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 7px 14px 9px;
+  transition: 0.4s;
+
+
+}
+
+.search-employees~.focus-border:before,
+.search-employees~.focus-border:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4caf50;
+  transition: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.search-employees~.focus-border:after {
+  top: auto;
+  bottom: 0;
+  right: auto;
+  left: 0;
+  transition-delay: 0.6s;
+}
+
+.search-employees~.focus-border i:before,
+.search-employees~.focus-border i:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background-color: #4caf50;
+  transition: 0.2s;
+}
+
+.search-employees~.focus-border i:after {
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+  transition-delay: 0.4s;
+}
+
+.search-employees:focus~.focus-border:before,
+.search-employees:focus~.focus-border:after {
+  width: 100%;
+  transition: 0.2s;
+  transition-delay: 0.6s;
+}
+
+.search-employees:focus~.focus-border:after {
+  transition-delay: 0.2s;
+}
+
+.search-employees:focus~.focus-border i:before,
+.search-employees:focus~.focus-border i:after {
+  height: 100%;
+  transition: 0.2s;
+}
+
+.search-employees:focus~.focus-border i:after {
+  transition-delay: 0.4s;
+}
+
+.large-title {
   padding: 20px;
 }
 
-.medium-title{
+.medium-title {
   padding: 24px;
 }
 
@@ -17,12 +111,10 @@
 @import './_homeSmall.scss';
 
 
-@media(min-width:640px){
+@media(min-width:640px) {
   @import './_homeMedium.scss';
 }
 
-@media(min-width:1024px){
+@media(min-width:1024px) {
   @import './_homeLarge.scss';
 }
-
-

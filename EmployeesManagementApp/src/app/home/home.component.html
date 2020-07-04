@@ -7,8 +7,14 @@
     </div>
     <div class="d-flex">
       <span class="medium-title font-padding subtitle-style">Employee List</span>
-
     </div>
-    <ema-employees-list class="d-flex display-column flex-self-stretch"></ema-employees-list>
+    <div class="d-flex flex-self-stretch search-employees-container">
+
+      <input class="d-flex search-employees" type="text" placeholder="Search" [(ngModel)]="searchKey">
+      <span class="focus-border">
+        <i></i>
+      </span>
+    </div>
+    <ema-employees-list class="d-flex display-column flex-self-stretch" [filter]="searchKey"></ema-employees-list>
   </div>
 </div>

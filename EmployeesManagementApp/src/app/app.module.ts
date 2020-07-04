@@ -8,6 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { FilterEmployeePipe } from './pipes/filter-employee.pipe';
+
+
 
 @NgModule({
   declarations: [
@@ -15,12 +20,15 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     HomeComponent,
     EmployeeComponent,
     EmployeesListComponent,
-    OrderByPipe
+    OrderByPipe,
+    FilterEmployeePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
