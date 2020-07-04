@@ -7,13 +7,14 @@
       <div class="" [innerHTML]="employee.Details"></div>
     </div>
     <div class="d-flex center-end">
+      <button class="button" (click)="DeleteEmployee()">
+        <img class="delete-button employee-man-button" src="../../assets/images/delete-user.png" />
+      </button>
+    </div>
+    <div class="d-flex center-end">
       <button class="button" [disabled]="employee.Blocked">
         <img class="edit-button employee-man-button" src="../../assets/images/edit-user.png" />
       </button>
     </div>
-    <div class="d-flex center-end">
-      <button class="button">
-        <img class="delete-button employee-man-button" src="../../assets/images/delete-user.png" />
-      </button>
-    </div>
+
   </div>

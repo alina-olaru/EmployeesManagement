@@ -1,3 +1,5 @@
+import { ConfirmDialogData } from 'src/app/models/confirm-dialog-data';
+import { ConfirmDialogService } from './../shared/confirm-dialog/confirm-dialog.service';
 import { Employee } from './../models/employee';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
@@ -20,11 +22,24 @@ export class EmployeeComponent implements OnInit {
   @Input('employee') employee: Employee;
   description: SafeHtml;
 
-  constructor() {
+  constructor(private confirmDialogService: ConfirmDialogService) {
 
   }
 
   ngOnInit(): void {
     console.log(this.employee);
+  }
+
+  DeleteEmployee(){
+    this.confirmDialogService.OpenModal(
+      {
+        title: "Delete Employee",
+        content: `Are you sure that you want to delete <b>${this.employee.FirstName} - ${this.employee.SecondName}</b>?`,
+        deleteText: "Delete",
+        dismissText: "Cancel"
+      } as ConfirmDialogData
+    ).subscribe(response => {
+      console.log(response);
+    })
   }
 }

@@ -1,0 +1,16 @@
+<div id="overlay" [class]="{'dialog-visible': showDialog}" *ngIf="data!=null"></div>
+<div class="confirm-dialog-modal" [class]="{'dialog-visible': showDialog}" *ngIf="data!=null">
+  <div class="confirm-dialog-title">
+    {{data.title}}
+  </div>
+  <div class="confirm-dialog-content" [innerHTML]="data.content">
+  </div>
+  <div class="confirm-dialog-buttons">
+    <button class="button confirm-button" (click)="Close()">
+      {{data.deleteText}}
+    </button>
+    <button class="button dismiss-button" (click)="Dismiss()">
+      {{data.dismissText}}
+    </button>
+  </div>
+</div>
