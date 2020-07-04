@@ -1,9 +1,23 @@
 import { ConfirmDialogData } from 'src/app/models/confirm-dialog-data';
 import { ConfirmDialogService } from './../shared/confirm-dialog/confirm-dialog.service';
 import { Employee } from './../models/employee';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
+import { ConfirmDialogType } from '../models/confirm-dialog-type.enum';
 
 @Component({
   selector: 'app-employee',
@@ -11,35 +25,43 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./employee.component.scss'],
   animations: [
     trigger('fadeInOut', [
-    state('void', style({
-      opacity: 0
-    })),
-    transition('void <=> *', animate(1500)),
-  ]),],
-  changeDetection: ChangeDetectionStrategy.OnPush
+      state(
+        'void',
+        style({
+          opacity: 0,
+        })
+      ),
+      transition('void <=> *', animate(1500)),
+    ]),
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeComponent implements OnInit {
   @Input('employee') employee: Employee;
+  @Output() deleteEmployee: EventEmitter<Employee> = new EventEmitter<
+    Employee
+  >();
   description: SafeHtml;
 
-  constructor(private confirmDialogService: ConfirmDialogService) {
-
-  }
+  constructor(private confirmDialogService: ConfirmDialogService) {}
 
   ngOnInit(): void {
     console.log(this.employee);
   }
 
-  DeleteEmployee(){
-    this.confirmDialogService.OpenModal(
-      {
-        title: "Delete Employee",
-        content: `Are you sure that you want to delete <b>${this.employee.FirstName} - ${this.employee.SecondName}</b>?`,
-        deleteText: "Delete",
-        dismissText: "Cancel"
-      } as ConfirmDialogData
-    ).subscribe(response => {
-      console.log(response);
-    })
+  DeleteEmployee() {
+    let deleteSubscription = this.confirmDialogService.OpenModal({
+      title: 'Delete Employee',
+      content: `Are you sure that you want to delete <b>${this.employee.FirstName} - ${this.employee.SecondName}</b>?`,
+      deleteText: 'Delete',
+      dismissText: 'Cancel',
+    } as ConfirmDialogData).subscribe((response) => {
+      if (response) {
+        if (response == ConfirmDialogType.CLOSE) {
+          this.deleteEmployee.emit(this.employee);
+        }
+        deleteSubscription.unsubscribe();
+      }
+    });
   }
 }

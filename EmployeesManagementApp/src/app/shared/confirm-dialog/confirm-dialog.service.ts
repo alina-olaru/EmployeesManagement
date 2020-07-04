@@ -18,6 +18,7 @@ export class ConfirmDialogService {
 
   OpenModal(data: ConfirmDialogData) {
     this.modalSubjectSource.next(data);
+    this.modalCloseSubjectSource.next(null);
     return this.modalCloseSubjectSource.asObservable();
   }
 

@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { ConfirmDialogData } from './../../models/confirm-dialog-data';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmDialogType } from 'src/app/models/confirm-dialog-type.enum';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'ema-confirm-dialog',
@@ -14,8 +15,10 @@ export class ConfirmDialogComponent implements OnInit {
 
   showDialog: boolean;
   data: ConfirmDialogData;
+  description: SafeHtml;
 
-  constructor(private confirmDialogService: ConfirmDialogService) {
+  constructor(private confirmDialogService: ConfirmDialogService,
+    private sanitizer: DomSanitizer) {
     this.showDialog = false;
     this.data = null;
    }
@@ -25,6 +28,9 @@ export class ConfirmDialogComponent implements OnInit {
       if(observer != null){
         this.data = observer;
         this.showDialog = true;
+        this.description = this.sanitizer.bypassSecurityTrustHtml(
+          this.data.content
+        );
       }
     });
   }

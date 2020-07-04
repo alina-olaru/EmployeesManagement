@@ -1,3 +1,4 @@
 <div *ngFor="let employee of employees | async | filterEmployee:filter | orderBy:'FirstName'">
-  <app-employee style="width: 100%;" [employee]="employee"></app-employee>
+  <app-employee style="width: 100%;" [employee]="employee"
+  (deleteEmployee)="DeleteEmployee($event)"></app-employee>
 </div>
