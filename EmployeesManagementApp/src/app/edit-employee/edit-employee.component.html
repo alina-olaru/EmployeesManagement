@@ -1,0 +1,30 @@
+<div class="d-flex flex-self-stretch page-title">
+  <span class="medium-title font-padding subtitle-style">Employee Edit</span>
+</div>
+<div class="body-edit">
+  <div class="edit-name">
+    {{employee.FirstName}} {{employee.SecondName}}
+  </div>
+  <div class="edit-description" [innerHTML]="description">
+  </div>
+  <div class="d-flex flex-self-stretch edit-employee-position-container">
+
+    <input class="d-flex edit-employee-position" type="text" placeholder="Edit employee position" [formControl]="position">
+    <span class="focus-border">
+      <i></i>
+    </span>
+  </div>
+
+  <div class="edit-buttons">
+    <button class="button cancel-button" [routerLink]="['home']">
+      Cancel
+    </button>
+    <button class="button save-button" [disabled]="!position.valid" (click)="UpdateEmployee()">
+      Save
+    </button>
+  </div>
+
+  <div class="update-status" [hidden]="countdown==0" [class]="{'update-status-successful': updateStatus,'update-status-unsuccessful': !updateStatus }">
+    Changes were {{updateStatus == false ? "not" : ""}} done successfully!
+  </div>
+</div>

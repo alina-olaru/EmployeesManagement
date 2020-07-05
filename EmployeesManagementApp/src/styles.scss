@@ -82,3 +82,9 @@
 .font-padding {
   padding: 21px !important;
 }
+
+router-outlet + * {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

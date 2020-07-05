@@ -4,7 +4,7 @@
     </div>
     <div class="d-flex display-column start-center center employee-details">
       <div class="subtitle-style">{{ employee.FirstName }} {{employee.SecondName}}</div>
-      <div class="" [innerHTML]="employee.Details"></div>
+      <div class="" [innerHTML]="description"></div>
     </div>
     <div class="d-flex center-end">
       <button class="button" (click)="DeleteEmployee()">
@@ -12,7 +12,8 @@
       </button>
     </div>
     <div class="d-flex center-end">
-      <button class="button" [disabled]="employee.Blocked">
+      <button class="button" [disabled]="employee.Blocked"
+      [routerLink]="['/edit', employee.Id]">
         <img class="edit-button employee-man-button" src="../../assets/images/edit-user.png" />
       </button>
     </div>

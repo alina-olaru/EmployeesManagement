@@ -9,7 +9,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { SafeHtml } from '@angular/platform-browser';
+import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import {
   trigger,
   state,
@@ -43,25 +43,30 @@ export class EmployeeComponent implements OnInit {
   >();
   description: SafeHtml;
 
-  constructor(private confirmDialogService: ConfirmDialogService) {}
+  constructor(
+    private confirmDialogService: ConfirmDialogService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.employee);
+    this.description = this.sanitizer.bypassSecurityTrustHtml(this.employee.Details);
   }
 
   DeleteEmployee() {
-    let deleteSubscription = this.confirmDialogService.OpenModal({
-      title: 'Delete Employee',
-      content: `Are you sure that you want to delete <b>${this.employee.FirstName} - ${this.employee.SecondName}</b>?`,
-      deleteText: 'Delete',
-      dismissText: 'Cancel',
-    } as ConfirmDialogData).subscribe((response) => {
-      if (response) {
-        if (response == ConfirmDialogType.CLOSE) {
-          this.deleteEmployee.emit(this.employee);
+    let deleteSubscription = this.confirmDialogService
+      .OpenModal({
+        title: 'Delete Employee',
+        content: `Are you sure that you want to delete <b>${this.employee.FirstName} - ${this.employee.SecondName}</b>?`,
+        deleteText: 'Delete',
+        dismissText: 'Cancel',
+      } as ConfirmDialogData)
+      .subscribe((response) => {
+        if (response) {
+          if (response == ConfirmDialogType.CLOSE) {
+            this.deleteEmployee.emit(this.employee);
+          }
+          deleteSubscription.unsubscribe();
         }
-        deleteSubscription.unsubscribe();
-      }
-    });
+      });
   }
 }

@@ -1,7 +1,4 @@
-.box-title {
-  width: 95%;
-  background-color: rgba(0, 0, 0, 0.048);
-}
+
 
 .search-employees-container {
   position: relative;
@@ -96,25 +93,4 @@ input[type="text"] {
 
 .search-employees:focus~.focus-border i:after {
   transition-delay: 0.4s;
-}
-
-.large-title {
-  padding: 20px;
-}
-
-.medium-title {
-  padding: 24px;
-}
-
-
-
-@import './_homeSmall.scss';
-
-
-@media(min-width:640px) {
-  @import './_homeMedium.scss';
-}
-
-@media(min-width:1024px) {
-  @import './_homeLarge.scss';
 }

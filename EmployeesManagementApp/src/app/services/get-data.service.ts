@@ -2,6 +2,7 @@ import { Employee } from './../models/employee';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +47,24 @@ export class GetDataService {
     }
 
     this.employeesSubject.next(employees);
+  }
 
+  getEmployee(id: string): Observable<Employee> {
+    return this.subscribeToEmployees().pipe(
+      map((employees) => employees.find((emp) => emp.Id == id))
+    );
+  }
 
+  updateEmployee(employee: Employee): boolean {
+
+    let employees: Employee[] = this.employeesSubject.getValue();
+    let idx = employees.map((e) => e.Id).indexOf(employee.Id);
+    if (idx >= 0) {
+      employees[idx].Position = employee.Position;
+      localStorage.setItem('employees', JSON.stringify(employees));
+      this.employeesSubject.next(employees);
+      return true;
+    }
+    return false;
   }
 }

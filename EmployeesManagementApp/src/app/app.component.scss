@@ -1,0 +1,26 @@
+.box-title {
+  width: 95%;
+  background-color: rgba(0, 0, 0, 0.048);
+}
+
+.large-title {
+  padding: 20px;
+}
+
+.medium-title {
+  padding: 24px;
+}
+
+
+
+
+@import './appSmall';
+
+
+@media(min-width:640px) {
+  @import './appMedium';
+}
+
+@media(min-width:1024px) {
+  @import './appLarge';
+}

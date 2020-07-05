@@ -1,0 +1,167 @@
+.page-title {
+display: flex;
+flex: auto;
+justify-content: center;
+}
+.medium-title{
+  padding-bottom: 20px;
+  width: 90%;
+  border-bottom: 1px solid gray;
+}
+
+.body-edit {
+  padding-top: 20px;
+  width: 95%;
+  align-self: center;
+}
+
+.edit-employee-position-container {
+  position: relative;
+}
+
+/* necessary to give position: relative to parent. */
+input[type="text"] {
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+.edit-employee-position {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 7px 14px 9px;
+  transition: 0.4s;
+
+
+}
+
+.edit-employee-position~.focus-border:before,
+.edit-employee-position~.focus-border:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4caf50;
+  transition: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.edit-employee-position~.focus-border:after {
+  top: auto;
+  bottom: 0;
+  right: auto;
+  left: 0;
+  transition-delay: 0.6s;
+}
+
+.edit-employee-position~.focus-border i:before,
+.edit-employee-position~.focus-border i:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background-color: #4caf50;
+  transition: 0.2s;
+}
+
+.edit-employee-position~.focus-border i:after {
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+  transition-delay: 0.4s;
+}
+
+.edit-employee-position:focus~.focus-border:before,
+.edit-employee-position:focus~.focus-border:after {
+  width: 100%;
+  transition: 0.2s;
+  transition-delay: 0.6s;
+}
+
+.edit-employee-position:focus~.focus-border:after {
+  transition-delay: 0.2s;
+}
+
+.edit-employee-position:focus~.focus-border i:before,
+.edit-employee-position:focus~.focus-border i:after {
+  height: 100%;
+  transition: 0.2s;
+}
+
+.edit-employee-position:focus~.focus-border i:after {
+  transition-delay: 0.4s;
+}
+
+.edit-name{
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.edit-description{
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.edit-buttons{
+  margin-top: 20px;
+  text-align: end;
+
+  .button{
+    padding: 7px 20px;
+    color: white;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+  .cancel-button {
+    margin-right: 5px;
+    background-color: #138496;
+    border: 1px solid #117a8b;
+  }
+
+  .save-button {
+    margin-left: 5px;
+    background-color: #218838;
+    border: 1px solid #1e7e34;
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #b1ddba;
+      border: 1px solid #d2e7d7;
+    }
+
+  }
+
+}
+
+.update-status{
+  margin-top: 20px;
+  padding: 20px;
+  color: white;
+  border-radius: 5px;
+}
+
+.update-status-successful{
+  background-color: #82b98d;
+}
+
+.update-status-unsuccessful{
+  background-color: rgb(207, 133, 133);
+}

@@ -10,8 +10,9 @@ import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterEmployeePipe } from './pipes/filter-employee.pipe';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 
 
@@ -22,7 +23,8 @@ import { FilterEmployeePipe } from './pipes/filter-employee.pipe';
     EmployeeComponent,
     EmployeesListComponent,
     OrderByPipe,
-    FilterEmployeePipe
+    FilterEmployeePipe,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { FilterEmployeePipe } from './pipes/filter-employee.pipe';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
