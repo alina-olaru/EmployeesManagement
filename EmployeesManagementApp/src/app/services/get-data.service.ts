@@ -42,11 +42,20 @@ export class GetDataService {
 
     if (employees.length > 0) {
       localStorage.setItem('employees', JSON.stringify(employees));
+      this.employeesSubject.next(employees);
     } else {
       localStorage.removeItem('employees');
+      this.employeesSubject.next(null);
+      this.http
+      .get<Employee[]>('../../assets/employees.json')
+      .subscribe((data: Employee[]) => {
+        console.log('in fetch data' + data);
+        this.employeesSubject.next(data);
+      }),
+      (error) => console.log(error);
     }
 
-    this.employeesSubject.next(employees);
+
   }
 
   getEmployee(id: string): Observable<Employee> {
